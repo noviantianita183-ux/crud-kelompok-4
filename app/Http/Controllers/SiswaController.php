@@ -48,7 +48,8 @@ class SiswaController extends Controller
 
     public function edit(Siswa $siswa)
     {
-        return view('siswa.edit', compact('siswa'));
+        $jurusan = $this->dataJurusan();
+        return view('siswa.edit', compact('siswa', 'jurusan'));
     }
 
     public function update(Request $request, Siswa $siswa)
