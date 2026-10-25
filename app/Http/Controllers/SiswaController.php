@@ -11,6 +11,7 @@ class SiswaController extends Controller
     {
         return ['PPLG','TJKT','BC','ELKA'];
     }
+
     public function index()
     {
         $siswas = Siswa::orderBy('nis', 'asc')->paginate(30);
