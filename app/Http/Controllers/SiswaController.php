@@ -26,15 +26,18 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nis' => 'required',
-            'nama' => 'required',
-            'kelas' => 'required',
-            'jurusan' => 'required',
-            'tanggal_lahir' => 'required',
-            'alamat' => 'required',
-            'keterangan' => 'required',
-        ]);
+      
+    $request->validate([
+        'nis' => 'required|unique:siswas,nis', 
+        'nama' => 'required',
+        'kelas' => 'required',
+        'jurusan' => 'required',
+        'tanggal_lahir' => 'required|date',
+        'alamat' => 'required',
+        'keterangan' => 'required',
+        'nis.unique' => 'NIS sudah ada , gaboleh sama!'
+    ]);
+
 
         Siswa::create($request->all());
 
