@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
+    private function dataJurusan()
+    {
+        return ['PPLG','TJKT','BC','ELKA'];
+    }
     public function index()
     {
         $siswas = Siswa::orderBy('nis', 'asc')->paginate(30);
@@ -15,7 +19,8 @@ class SiswaController extends Controller
 
     public function create()
     {
-        return view('siswa.create');
+        $jurusan = $this->dataJurusan();
+        return view('siswa.create', compact('jurusan'));
     }
 
     public function store(Request $request)
